@@ -13,7 +13,15 @@ class PostController extends Controller
     {
         $count = $request->query('count') ?? 100;
 
-        $posts = DB::select('select * from posts limit ?', [intval($count)]);
+        $posts_all = DB::select('select * from posts');
+
+        //$posts = DB::select('select * from posts limit ?', [intval($count)]);
+
+        $posts = [];
+        for($i = 0; $i >= intval($count); $i++)
+        {
+            $posts.push($posts_all[i]);
+        }
 
         return View::make('debug', ['data' => json_encode($posts)]);
     }
