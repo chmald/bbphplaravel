@@ -17,10 +17,10 @@ class PostController extends Controller
 
         //$posts = DB::select('select * from posts limit ?', [intval($count)]);
 
-        $posts = [];
-        for($i = 0; $i >= intval($count); $i++)
+        $posts = array();
+        foreach($posts_all as $post)
         {
-            $posts.push($posts_all[i]);
+            array_push($posts, $post);
         }
 
         return View::make('debug', ['data' => json_encode($posts)]);
